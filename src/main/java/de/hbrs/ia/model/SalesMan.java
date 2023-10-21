@@ -1,39 +1,27 @@
 package de.hbrs.ia.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Value;
 import org.bson.Document;
 
+@Value
+@JsonDeserialize
+@JsonSerialize
 public class SalesMan {
-    private String firstname;
-    private String lastname;
-    private Integer id;
+    String firstname;
+    String lastname;
+    String id;
 
-    public SalesMan(String firstname, String lastname, Integer id) {
+    public SalesMan(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.id = id;
+        this.id = null;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
+    public SalesMan(String firstname, String lastname, String id) {
         this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,5 +31,12 @@ public class SalesMan {
         document.append("lastname" , this.lastname );
         document.append("id" , this.id);
         return document;
+    }
+
+    public static SalesMan fromDocument(Document document) {
+        String firstname = (String) document.get("firstname");
+        String lastname = (String) document.get("lastname");
+        String id = (String) document.get("id");
+        return new SalesMan(firstname, lastname, id);
     }
 }
