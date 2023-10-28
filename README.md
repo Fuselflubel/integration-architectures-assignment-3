@@ -1,4 +1,4 @@
-# Assignment 1.2: Software for managing Performance Records
+# Assignment 2: Software for managing Performance Records
 ## Solution by Luca Auer & Patrick Gröger
 
 To run this project, you need to have a MongoDB server running on your machine. You can download it [here](https://www.mongodb.com/try/download/community).
