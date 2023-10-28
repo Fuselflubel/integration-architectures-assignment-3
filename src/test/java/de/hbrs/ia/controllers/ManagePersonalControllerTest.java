@@ -29,7 +29,7 @@ class ManagePersonalControllerTest {
     @Order(1)
     public void salesman_roundTripTest() {
         // create a salesman
-        SalesMan salesman = new SalesMan("Sascha", "Alda");
+        SalesMan salesman = new SalesMan("Sascha", "Alda", null);
 
         // store the salesman
         salesman = managePersonalController.createSalesMan(salesman);
@@ -56,13 +56,13 @@ class ManagePersonalControllerTest {
     @Order(2)
     public void evaluationRecord_roundTripTest() {
         // create a salesman
-        SalesMan salesman = new SalesMan("Sascha", "Alda");
+        SalesMan salesman = new SalesMan("Sascha", "Alda", null);
 
         // store the salesman
         salesman = managePersonalController.createSalesMan(salesman);
 
         // create a evaluation record
-        EvaluationRecord evaluationRecord = new EvaluationRecord(null, "Goal 1", 100, 50, salesman.getId());
+        EvaluationRecord evaluationRecord = new EvaluationRecord(null, 4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 120, salesman.getId());
         evaluationRecord = managePersonalController.addPerformanceReord(evaluationRecord, salesman.getId());
 
         // read all evaluation records
@@ -73,7 +73,7 @@ class ManagePersonalControllerTest {
         assertEquals(evaluationRecord, readEvaluationRecord);
 
         // update the evaluation record
-        EvaluationRecord updatedEvaluationRecord = new EvaluationRecord(evaluationRecord.goalId(), "Goal 2", 200, 100, salesman.getId());
+        EvaluationRecord updatedEvaluationRecord = new EvaluationRecord(null, 4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 20,4, 3, 120, salesman.getId());
         updatedEvaluationRecord = managePersonalController.updateEvaluationRecord(updatedEvaluationRecord, salesman.getId(), evaluationRecord.goalId());
         assertEquals(updatedEvaluationRecord, managePersonalController.readSingleEvaluationRecords(salesman.getId(), evaluationRecord.goalId()));
 

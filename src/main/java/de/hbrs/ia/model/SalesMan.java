@@ -13,11 +13,13 @@ public class SalesMan {
     String lastname;
     String id;
 
+    /*
+    Disabled because of a bug making creating salesmen impossible
     public SalesMan(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.id = null;
-    }
+    }*/
 
     public SalesMan(String firstname, String lastname, String id) {
         this.firstname = firstname;
